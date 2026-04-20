@@ -34,20 +34,20 @@ img { display: block; max-width: 100%; height: auto; object-fit: cover; }
 a { color: inherit; text-decoration: none; }
 
 /* ═══════════════════════════════════════════
-   CINEMATIC LOADER
+   QUICK CINEMATIC LOADER
 ═══════════════════════════════════════════ */
 #ldr {
   position: fixed; inset: 0; z-index: 9999; background: var(--ink);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  transition: transform 1s var(--ease), visibility 1s;
+  transition: transform 0.8s var(--ease), visibility 0.8s;
 }
 #ldr.out { transform: translateY(-100%); visibility: hidden; }
-.ldr-text { font-family: var(--serif); font-size: 2rem; letter-spacing: 0.3em; overflow: hidden; }
-.ldr-text span { display: block; transform: translateY(110%); animation: ldrText 0.8s var(--ease) forwards; }
-.ldr-bar { width: 100px; height: 1px; background: var(--gold-muted); margin-top: 2rem; position: relative; overflow: hidden; }
+.ldr-text { font-family: var(--serif); font-size: 2.2rem; letter-spacing: 0.4em; overflow: hidden; }
+.ldr-text span { display: block; transform: translateY(110%); animation: ldrText 0.6s var(--ease) forwards; }
+.ldr-bar { width: 80px; height: 1px; background: var(--gold-muted); margin-top: 1.5rem; position: relative; overflow: hidden; }
 .ldr-bar::after { 
     content: ''; position: absolute; inset: 0; background: var(--gold); 
-    transform: scaleX(0); transform-origin: left; animation: ldrBar 2s var(--ease) forwards; 
+    transform: scaleX(0); transform-origin: left; animation: ldrBar 1s var(--ease) forwards; 
 }
 @keyframes ldrText { to { transform: translateY(0); } }
 @keyframes ldrBar { to { transform: scaleX(1); } }
@@ -55,80 +55,76 @@ a { color: inherit; text-decoration: none; }
 /* ═══════════════════════════════════════════
    CURSOR
 ═══════════════════════════════════════════ */
-#cur { position: fixed; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: transform 0.2s; }
+#cur { position: fixed; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: transform 0.1s; }
 #cur-ring { 
-    position: fixed; width: 40px; height: 40px; border: 1px solid var(--gold-muted); border-radius: 50%; 
+    position: fixed; width: 35px; height: 35px; border: 1px solid var(--gold-muted); border-radius: 50%; 
     pointer-events: none; z-index: 9999; transition: transform 0.15s ease-out, width 0.3s, height 0.3s; 
 }
-body.hovering #cur-ring { width: 80px; height: 80px; background: rgba(200, 169, 126, 0.1); border-color: var(--gold); }
-#cur-ring::after { 
-    content: 'VIEW'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    font-size: 0.5rem; letter-spacing: 0.2em; color: var(--gold); opacity: 0; 
-}
-body.hovering #cur-ring::after { opacity: 1; }
+body.hovering #cur-ring { width: 70px; height: 70px; background: rgba(200, 169, 126, 0.1); border-color: var(--gold); }
 
 /* ═══════════════════════════════════════════
-   NAVIGATION (Matches Screenshot)
+   NAVIGATION
 ═══════════════════════════════════════════ */
 nav { 
     position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; 
-    padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; 
+    padding: 2.2rem 3rem; display: flex; justify-content: space-between; align-items: center; 
+    mix-blend-mode: exclusion;
 }
-.logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.15em; font-weight: 300; }
+.logo { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.12em; font-weight: 300; }
 .logo em { font-style: italic; color: var(--gold); }
 
-.nav-center { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 3rem; }
-.nav-center a { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; opacity: 0.6; transition: opacity 0.3s; }
-.nav-center a:hover { opacity: 1; }
+.nav-links { display: flex; gap: 3.5rem; position: absolute; left: 50%; transform: translateX(-50%); }
+.nav-links a { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.25em; opacity: 0.6; transition: opacity 0.3s; font-weight: 300; }
+.nav-links a:hover { opacity: 1; }
 
 .btn-book { 
-    border: 1px solid var(--gold-muted); padding: 0.8rem 1.8rem; font-size: 0.6rem; 
-    text-transform: uppercase; letter-spacing: 0.25em; transition: all 0.4s; 
+    border: 1px solid var(--gold-muted); padding: 0.7rem 1.6rem; font-size: 0.6rem; 
+    text-transform: uppercase; letter-spacing: 0.2em; transition: all 0.4s; 
 }
 .btn-book:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
 
 /* ═══════════════════════════════════════════
-   HERO & GHOST TEXT
+   HERO
 ═══════════════════════════════════════════ */
-.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; }
-.hero-img { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
-.hero-img img { width: 100%; height: 100%; filter: brightness(0.4); transform: scale(1.1); animation: heroScale 10s infinite alternate linear; }
-@keyframes heroScale { to { transform: scale(1); } }
+.hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hero-img { position: absolute; inset: 0; z-index: 1; }
+.hero-img img { width: 100%; height: 100%; filter: brightness(0.45); transform: scale(1.05); }
 
 .hero-ghost { 
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-    font-family: var(--serif); font-size: 40vw; color: rgba(200, 169, 126, 0.03); 
+    position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); 
+    font-family: var(--serif); font-size: 45vw; color: rgba(200, 169, 126, 0.03); 
     white-space: nowrap; pointer-events: none; z-index: 2; 
 }
 
 .hero-content { position: relative; z-index: 3; text-align: center; }
-.hero-title { font-family: var(--serif); font-size: clamp(3rem, 10vw, 8rem); font-weight: 300; line-height: 0.9; margin-bottom: 2rem; }
+.hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 12vw, 9rem); font-weight: 300; line-height: 0.85; letter-spacing: -0.02em; }
 .hero-title em { font-style: italic; color: var(--gold); }
 
 /* ═══════════════════════════════════════════
-   SIDE-BY-SIDE GALLERY (Matches Screenshot)
+   EDITORIAL SIDE-BY-SIDE GALLERY
 ═══════════════════════════════════════════ */
-.gal-section { background: var(--ink); padding: 10vh 0; }
+.gal-section { background: var(--ink); padding: 15vh 0; }
 .gal-container { 
-    display: flex; gap: 2px; height: 85vh; padding: 0 1rem; 
+    display: flex; gap: 4px; height: 80vh; padding: 0 1.5rem; 
     cursor: none; overflow: hidden;
 }
-.gal-item { flex: 1; height: 100%; position: relative; overflow: hidden; transition: flex 0.8s var(--ease); }
-.gal-item:hover { flex: 1.5; }
-.gal-item img { width: 100%; height: 100%; transition: transform 1.2s var(--ease); }
-.gal-item:hover img { transform: scale(1.05); }
+.gal-item { flex: 1; height: 100%; position: relative; overflow: hidden; transition: flex 0.9s var(--ease); }
+.gal-item:hover { flex: 2.5; }
+.gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s var(--ease), filter 0.8s; filter: grayscale(0.4) brightness(0.7); }
+.gal-item:hover img { transform: scale(1.03); filter: grayscale(0) brightness(1); }
 
 /* ═══════════════════════════════════════════
-   UTILITIES
+   ANIMATIONS
 ═══════════════════════════════════════════ */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--ease); }
+.reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     nav { padding: 1.5rem; }
-    .nav-center { display: none; }
-    .gal-container { flex-direction: column; height: auto; gap: 2rem; }
-    .gal-item { height: 60vh; }
+    .nav-links { display: none; }
+    .gal-container { flex-direction: column; height: auto; gap: 1.5rem; }
+    .gal-item { height: 60vh; flex: none; }
+    .gal-item:hover { flex: none; }
 }
 </style>
 </head>
@@ -144,16 +140,16 @@ nav {
 
 <nav>
     <a href="#" class="logo">Dan<em>iik</em></a>
-    <div class="nav-center">
+    <div class="nav-links">
         <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#booking">Pricing</a>
     </div>
     <a href="#booking" class="btn-book">Book Session</a>
 </nav>
 
 <section class="hero">
-    <div class="hero-ghost">DANIIK</div>
+    <div class="hero-ghost">DK</div>
     <div class="hero-img">
         <img src="images/IMG_4556.jpg" alt="Background">
     </div>
@@ -163,37 +159,43 @@ nav {
 </section>
 
 <section class="gal-section" id="work">
-    <div class="gal-container" id="galRow">
+    <div class="gal-container" id="editorialGal">
         </div>
 </section>
 
 <script>
+// High-res imagery for the editorial layout
 const IMGS = ["images/IMG_4529.jpg","images/IMG_4650.jpg","images/IMG_4668.jpg","images/IMG_4728.jpg","images/IMG_4853.jpg"];
 
-// Loader
+// Fast Cinematic Loader Logic (1s delay)
 window.addEventListener('load', () => {
-    setTimeout(() => document.getElementById('ldr').classList.add('out'), 2000);
+    setTimeout(() => {
+        document.getElementById('ldr').classList.add('out');
+    }, 1000); 
 });
 
-// Cursor
+// Custom Smooth Cursor
 const cur = document.getElementById('cur'), ring = document.getElementById('cur-ring');
 document.addEventListener('mousemove', e => {
-    cur.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
-    ring.style.transform = `translate(${e.clientX - 20}px, ${e.clientY - 20}px)`;
+    cur.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+    ring.style.transform = `translate(${e.clientX - 17.5}px, ${e.clientY - 17.5}px)`;
 });
 
-// Gallery Injection
-const galRow = document.getElementById('galRow');
+// Injecting the Editorial Gallery Items
+const galContainer = document.getElementById('editorialGal');
 IMGS.forEach(src => {
     const item = document.createElement('div');
     item.className = 'gal-item';
-    item.innerHTML = `<img src="${src}" alt="Portfolio Image">`;
+    item.innerHTML = `<img src="${src}" alt="Daniik Portfolio Image">`;
+    
+    // Interaction for the cursor expansion
     item.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
     item.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    galRow.appendChild(item);
+    
+    galContainer.appendChild(item);
 });
 
-// Reveal Observer
+// Intersection Observer for Reveal effects
 const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
