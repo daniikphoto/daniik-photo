@@ -24,7 +24,7 @@
   .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
   .nav-links a { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--paper); text-decoration: none; opacity: 0.7; }
 
-  /* Hero Section Fixed */
+  /* Hero */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1.2fr 0.8fr; position: relative; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: flex-end; padding: 8rem 3rem 5rem; z-index: 2; }
   .hero-title { font-family: var(--serif); font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 300; line-height: 1.05; margin-bottom: 2rem; }
@@ -32,50 +32,34 @@
   .hero-right { position: relative; width: 100%; height: 100vh; }
   .hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
 
-  /* Auto-Slider Styles */
+  /* Slider */
   .slider-section { padding: 6rem 0; position: relative; }
   .slider-wrapper { position: relative; width: 100%; overflow: hidden; }
-  .slider-container { 
-    display: flex; 
-    gap: 20px; 
-    padding: 0 3rem; 
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
-    scrollbar-width: none; 
-    scroll-behavior: smooth;
-  }
+  .slider-container { display: flex; gap: 20px; padding: 0 3rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; scroll-behavior: smooth; }
   .slider-container::-webkit-scrollbar { display: none; }
-  
-  .slide { 
-    min-width: 60vw; 
-    height: 75vh; 
-    flex-shrink: 0; 
-    scroll-snap-align: center; 
-    overflow: hidden; 
-    position: relative;
-  }
+  .slide { min-width: 60vw; height: 75vh; flex-shrink: 0; scroll-snap-align: center; overflow: hidden; position: relative; }
   .slide img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s cubic-bezier(0.23,1,0.32,1); filter: grayscale(20%); }
-  
-  /* Arrows Hidden by Default - Show on Hover */
-  .slider-nav { 
-    position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; 
-    padding: 0 4rem; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; z-index: 10;
-  }
+  .slider-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; padding: 0 4rem; pointer-events: none; opacity: 0; transition: opacity 0.4s ease; z-index: 10; }
   .slider-section:hover .slider-nav { opacity: 1; }
-  .s-btn { 
-    background: rgba(14, 13, 12, 0.6); border: 1px solid var(--warm); color: var(--warm); 
-    width: 60px; height: 60px; border-radius: 50%; pointer-events: auto; cursor: none;
-    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-  }
+  .s-btn { background: rgba(14, 13, 12, 0.6); border: 1px solid var(--warm); color: var(--warm); width: 60px; height: 60px; border-radius: 50%; pointer-events: auto; cursor: none; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s; }
+  .s-btn:hover { background: var(--warm); color: var(--ink); }
 
-  /* Booking & Pricing */
+  /* Pricing & Booking */
   .booking-section { padding: 8rem 3rem; border-top: 1px solid rgba(200,169,126,0.12); }
-  .price-calc-wrap { background: rgba(200,169,126,0.03); border: 1px solid rgba(200,169,126,0.1); padding: 3rem; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; }
-  .time-option { padding: 1.5rem; border: 1px solid rgba(200,169,126,0.2); display: flex; justify-content: space-between; align-items: center; transition: 0.3s; cursor: none; }
-  .time-option.active { border-color: var(--warm); background: rgba(200,169,126,0.08); }
+  .price-calc-wrap { background: rgba(200,169,126,0.03); border: 1px solid rgba(200,169,126,0.1); padding: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  
+  .selector-group { display: flex; flex-direction: column; gap: 1.5rem; }
+  .selector-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--warm); margin-bottom: 0.5rem; display: block;}
+  
+  .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .calc-option { padding: 1rem; border: 1px solid rgba(200,169,126,0.2); font-size: 0.8rem; transition: 0.3s; cursor: none; text-align: center; }
+  .calc-option.active { border-color: var(--warm); background: rgba(200,169,126,0.1); color: var(--warm); }
+  
+  .est-price-box { border-left: 1px solid rgba(200,169,126,0.1); padding-left: 3rem; display: flex; flex-direction: column; justify-content: center; align-items: center; }
   .est-value { font-family: var(--serif); font-size: 5rem; line-height: 1; }
+  
   .fg input, .fg textarea { background: transparent; border: none; border-bottom: 1px solid rgba(200,169,126,0.25); color: var(--paper); padding: 0.75rem 0; outline: none; width: 100%; font-family: var(--sans); }
-  .bsubmit { background: var(--warm); color: var(--ink); border: none; padding: 1.2rem; cursor: none; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; width: 100%; }
+  .bsubmit { background: var(--warm); color: var(--ink); border: none; padding: 1.2rem; cursor: none; text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; width: 100%; transition: 0.3s; margin-top: 2rem; }
 
   .reveal { opacity:0; transform:translateY(30px); transition: 0.9s ease-out; }
   .reveal.visible { opacity:1; transform:translateY(0); }
@@ -105,10 +89,6 @@
 </section>
 
 <section class="slider-section" id="work">
-  <div class="reveal" style="padding-left: 3rem; margin-bottom: 2rem;">
-    <h2 style="font-family: var(--serif); font-size: 3rem; font-weight: 300;">Selected <em>Works</em></h2>
-  </div>
-
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
       <div class="slide"><img src="images/IMG_5411.jpg"></div>
@@ -120,7 +100,6 @@
       <div class="slide"><img src="images/IMG_5583.jpg"></div>
       <div class="slide"><img src="images/IMG_5747.jpg"></div>
     </div>
-    
     <div class="slider-nav">
       <button class="s-btn" id="prevBtn">←</button>
       <button class="s-btn" id="nextBtn">→</button>
@@ -130,16 +109,31 @@
 
 <section class="booking-section" id="booking">
   <div class="price-calc-wrap reveal">
-    <div class="duration-selector">
-      <div class="time-option" data-time="15-45min" data-price="15"><span>15 — 45 Minutes</span><span>$15</span></div>
-      <div class="time-option" data-time="45min-2hr" data-price="30"><span>45 Min — 2 Hours</span><span>$30</span></div>
-      <div class="time-option" data-time="2hr-3hr" data-price="45"><span>2 — 3 Hours</span><span>$45</span></div>
-      <div class="time-option" data-time="3hr+" data-price="55"><span>3+ Hours</span><span>$55</span></div>
+    <div class="selector-group">
+      <div>
+        <span class="selector-label">1. Select Event Type</span>
+        <div class="option-grid">
+          <div class="calc-option type-opt active" data-value="Sports" data-multiplier="1">Sports</div>
+          <div class="calc-option type-opt" data-value="Portraits" data-multiplier="1.2">Portraits</div>
+          <div class="calc-option type-opt" data-value="Events" data-multiplier="1.5">Events / Social</div>
+        </div>
+      </div>
+      
+      <div>
+        <span class="selector-label">2. Select Duration</span>
+        <div class="option-grid">
+          <div class="calc-option time-opt active" data-time="Short" data-base="40">30-60 Min</div>
+          <div class="calc-option time-opt" data-time="Medium" data-base="75">1-2 Hours</div>
+          <div class="calc-option time-opt" data-time="Half Day" data-base="140">3-4 Hours</div>
+          <div class="calc-option time-opt" data-time="Full Day" data-base="250">Full Day</div>
+        </div>
+      </div>
     </div>
+
     <div class="est-price-box">
-      <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: var(--warm);">Total Investment</p>
-      <h3 class="est-value" id="displayPrice">$0</h3>
-      <p style="font-size: 0.6rem; color: var(--muted); margin-top: 10px;">Edits Included</p>
+      <p style="font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: var(--warm);">Estimated Investment</p>
+      <h3 class="est-value" id="displayPrice">$40</h3>
+      <p style="font-size: 0.6rem; color: var(--muted); margin-top: 10px; background: rgba(200,169,126,0.1); padding: 5px 12px; border-radius: 20px;">Professional Edits Included</p>
     </div>
   </div>
 
@@ -150,63 +144,77 @@
           <div class="fg"><label>Last Name</label><input type="text" name="lname" required></div>
         </div>
         <div class="fg"><label>Email</label><input type="email" name="email" required></div>
-        <input type="hidden" name="duration" id="inputDuration">
-        <input type="hidden" name="price" id="inputPrice">
-        <div class="fg"><label>Details</label><textarea name="message" rows="3"></textarea></div>
+        
+        <input type="hidden" name="event_type" id="inputEventType" value="Sports">
+        <input type="hidden" name="duration" id="inputDuration" value="Short">
+        <input type="hidden" name="quoted_price" id="inputPrice" value="$40">
+        
+        <div class="fg"><label>Details (Date, Location, Field#, etc.)</label><textarea name="message" rows="3" required></textarea></div>
         <button type="submit" class="bsubmit">Request Booking</button>
     </form>
     <div class="reveal" style="font-size: 0.8rem; color: var(--muted); line-height: 2.5; border-left: 1px solid var(--warm); padding-left: 2rem;">
-        ✦ Edited High-Res Gallery<br>✦ 25% Deposit Required<br>✦ 14-Day Delivery
+        <h4 style="color: var(--paper); font-family: var(--serif); font-size: 1.2rem; margin-bottom: 0.5rem;">The Small Print</h4>
+        ✦ Professional Editing Included<br>
+        ✦ 3—7 Day Gallery Waiting Period<br>
+        ✦ 25% Deposit Required to Confirm<br>
+        ✦ Refunds Allowed (Min. 2 days before event)
     </div>
   </div>
 </section>
 
 <script>
-  // Cursor
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   let mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
   (function anim(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
 
-  // Auto Slider Logic
   const slider = document.getElementById('slider');
   let isPaused = false;
-  
+  function getSlideWidth() { return document.querySelector('.slide').offsetWidth + 20; }
   function autoScroll() {
     if(!isPaused) {
-      if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth) {
-        slider.scrollTo({left: 0, behavior: 'smooth'});
-      } else {
-        slider.scrollBy({left: 400, behavior: 'smooth'});
-      }
+      if (slider.scrollLeft + slider.offsetWidth >= slider.scrollWidth - 10) { slider.scrollTo({left: 0, behavior: 'smooth'}); }
+      else { slider.scrollBy({left: getSlideWidth(), behavior: 'smooth'}); }
     }
   }
+  let timer = setInterval(autoScroll, 3500);
+  document.querySelector('.slider-section').addEventListener('mouseenter', () => isPaused = true);
+  document.querySelector('.slider-section').addEventListener('mouseleave', () => isPaused = false);
+  document.getElementById('nextBtn').addEventListener('click', () => slider.scrollBy({left: getSlideWidth(), behavior: 'smooth'}));
+  document.getElementById('prevBtn').addEventListener('click', () => slider.scrollBy({left: -getSlideWidth(), behavior: 'smooth'}));
 
-  let timer = setInterval(autoScroll, 3000);
+  // Price Calculation Logic
+  const typeOpts = document.querySelectorAll('.type-opt');
+  const timeOpts = document.querySelectorAll('.time-opt');
+  const displayPrice = document.getElementById('displayPrice');
 
-  slider.addEventListener('mouseenter', () => isPaused = true);
-  slider.addEventListener('mouseleave', () => isPaused = false);
+  function calculate() {
+    const activeType = document.querySelector('.type-opt.active');
+    const activeTime = document.querySelector('.time-opt.active');
+    
+    const base = parseFloat(activeTime.dataset.base);
+    const multiplier = parseFloat(activeType.dataset.multiplier);
+    const total = Math.round(base * multiplier);
+    
+    displayPrice.textContent = '$' + total;
+    document.getElementById('inputPrice').value = '$' + total;
+    document.getElementById('inputEventType').value = activeType.dataset.value;
+    document.getElementById('inputDuration').value = activeTime.dataset.time;
+  }
 
-  document.getElementById('nextBtn').addEventListener('click', () => {
-    slider.scrollBy({left: 500, behavior: 'smooth'});
-  });
-  document.getElementById('prevBtn').addEventListener('click', () => {
-    slider.scrollBy({left: -500, behavior: 'smooth'});
-  });
+  typeOpts.forEach(opt => opt.addEventListener('click', () => {
+    typeOpts.forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    calculate();
+  }));
 
-  // Price Calc
-  document.querySelectorAll('.time-option').forEach(opt => {
-    opt.addEventListener('click', () => {
-      document.querySelectorAll('.time-option').forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      document.getElementById('displayPrice').textContent = '$' + opt.dataset.price;
-      document.getElementById('inputPrice').value = '$' + opt.dataset.price;
-      document.getElementById('inputDuration').value = opt.dataset.time;
-    });
-  });
+  timeOpts.forEach(opt => opt.addEventListener('click', () => {
+    timeOpts.forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    calculate();
+  }));
 
-  // Reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
